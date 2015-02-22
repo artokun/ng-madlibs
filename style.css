@@ -1,0 +1,32 @@
+/* Styles go here */
+.logo,
+.title {
+  min-height: 120px;
+}
+.logo,
+.title,
+.form,
+.result{
+  border: 1px black solid;
+}
+.logo img{
+  max-height: 110px;
+}
+.title img {
+  max-height: 50px;
+}
+.title h1 {
+  margin: 10px 0;
+}
+.form > div{
+  padding: 0 20px;
+  text-align:center;
+}
+.form input{
+  margin: 5px;
+  display: inline-block;
+  text-align:center;
+}
+.result{
+  padding: 20px;
+}

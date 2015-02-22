@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link data-require="bootstrap@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <script data-require="bootstrap@*" data-semver="3.3.1" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script data-require="angular.js@*" data-semver="1.4.0-beta.4" src="https://code.angularjs.org/1.4.0-beta.4/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+
+<body ng-app="madLib" class="container">
+  <article ng-controller="madLibCtrl">
+    <section class="row">
+      <div class="col-sm-3 logo">
+        <img class="center-block img-responsive" src="mad-lib-happy-face.png" alt="Smile">
+      </div>
+      <div class="col-sm-9 title">
+        <img class="center-block img-responsive" src="ng-mad-libs-logo.png" alt="ngMadLibs Logo">
+        <h1 class="text-center">Automate This!</h1>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-sm-12 form">
+        <h3>Provide the following words:</h3>
+        <div class="col-sm-4">
+          <input ng-model="maleName" type="text" placeholder="Male Name">
+          <br>
+          <input ng-model="jobTitle" type="text" placeholder="Job Title">
+          <br>
+          <input ng-model="tediousTask" type="text" placeholder="Tedious Task">
+        </div>
+        <div class="col-sm-4">
+          <input ng-model="dirtyTask" type="text" placeholder="Dirty Task">
+          <br>
+          <input ng-model="celebrity" type="text" placeholder="Celebrity">
+          <br>
+          <input ng-model="uselessSkill" type="text" placeholder="Useless Skill">
+        </div>
+        <div class="col-sm-4">
+          <input ng-model="obnoxiousCelebrity" type="text" placeholder="Obnoxious Celebrity">
+          <br>
+          <input ng-model="hugeNumber" type="text" placeholder="Huge Number">
+          <br>
+          <input ng-model="adjective" type="text" placeholder="Adjective">
+        </div>
+        <p>&nbsp;</p>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-sm-12 result">
+        <p>{{maleName}} was a {{jobTitle | lowercase}} who loved technology. Although he loved parts of his job, he absolutely hated {{tediousTask | lowercase}} and {{dirtyTask | lowercase}}. So, {{maleName}} met with his life mentor {{celebrity}} who told him to learn how to {{uselessSkill | lowercase}}
+          with Thinkful. Thinkful didn't offer a course on {{uselessSkill | lowercase}} so he studied programming instead.</p>
+        <p>What a great decision! With his new skills, {{maleName}} built a(n) {{adjective | lowercase}} robot named {{obnoxiousCelebrity}} that not only loved {{dirtyTask | lowercase}} but did it {{hugeNumber | number}} times faster.</p>
+      </div>
+    </section>
+  </article>
+</body>
+
+</html>
