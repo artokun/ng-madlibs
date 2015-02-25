@@ -1,4 +1,7 @@
 /* Styles go here */
+body {
+  padding-top: 10px;
+}
 .logo,
 .title {
   min-height: 120px;
@@ -22,11 +25,10 @@
   padding: 0 20px;
   text-align:center;
 }
-.form input{
-  margin: 5px;
-  display: inline-block;
-  text-align:center;
-}
 .result{
   padding: 20px;
+}
+.libs {
+  text-decoration: underline;
+  font-weight: 300
 }
