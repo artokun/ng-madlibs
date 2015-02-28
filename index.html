@@ -6,6 +6,7 @@
   <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
   <script data-require="bootstrap@*" data-semver="3.3.1" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <script data-require="angular.js@*" data-semver="1.4.0-beta.4" src="https://code.angularjs.org/1.4.0-beta.4/angular.js"></script>
+  <script type="text/javascript" src="https://code.angularjs.org/1.4.0-beta.5/angular-messages.min.js"></script>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js"></script>
 </head>
@@ -21,37 +22,43 @@
         <h1 class="text-center">Automate This!</h1>
       </div>
     </section>
-    <section class="row" ng-hide="myForm.$valid && myForm.$submitted == true">
-      <form name="myForm" class="col-sm-12 form" no-validate>
-<!--       <button ng-click="female = !female">Female = {{female}}</button>-->
+    <section class="row" ng-hide="checkValid()">
+      <form name="myForm" class="col-sm-12 form" ng-submit="checkValid()" novalidate>
+
         <h3>Provide the following words:</h3>
         <div class="col-sm-4">
-          <input type="text" ng-model="user.name" class="form-control" placeholder="Name" required>
+          <div class="input-group">
+            <input type="text" name="name" ng-model="user.name" class="form-control" placeholder="Name" required><span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="checkGender()">{{gender.gender}}</button></span>
+          </div>
           <br>
-          <input class="form-control" ng-model="user.jobTitle" type="text" placeholder="Job Title" required>
+          <input class="form-control" ng-model="user.jobTitle" type="text" name="job" placeholder="Job Title" required>
           <br>
-          <input class="form-control" ng-model="user.tediousTask" type="text" placeholder="Tedious Task" required>
+          <input class="form-control" ng-model="user.tediousTask" type="text" name="tedious" placeholder="Tedious Task" required>
         </div>
         <div class="col-sm-4">
-          <input class="form-control" ng-model="user.dirtyTask" type="text" placeholder="Dirty Task" required>
+          <input class="form-control" ng-model="user.dirtyTask" type="text" name="dirty" placeholder="Dirty Task" required>
           <br>
-          <input class="form-control" ng-model="user.celebrity" type="text" placeholder="Celebrity" required>
+          <input class="form-control" ng-model="user.celebrity" type="text" name="celeb1" placeholder="Celebrity" required>
           <br>
-          <input class="form-control" ng-model="user.uselessSkill" type="text" placeholder="Useless Skill" required>
+          <input class="form-control" ng-model="user.uselessSkill" type="text" name="useless" placeholder="Useless Skill" required>
         </div>
         <div class="col-sm-4">
-          <input class="form-control" ng-model="user.obnoxiousCelebrity" type="text" placeholder="Obnoxious Celebrity" required>
+          <input class="form-control" ng-model="user.obnoxiousCelebrity" type="text" name="celeb2" placeholder="Obnoxious Celebrity" required>
           <br>
-          <input class="form-control" ng-model="user.hugeNumber" type="number" placeholder="Huge Number" required>
+          <input class="form-control" ng-model="user.hugeNumber" type="number" name="huge" placeholder="Huge Number" required>
           <br>
-          <input class="form-control" ng-model="user.adjective" type="text" placeholder="Adjective" required>
+          <input class="form-control" ng-model="user.adjective" type="text" name="adj" placeholder="Adjective" required>
           <br>
-          <input class="form-control btn btn-primary" type="submit" ng-submit="checkGender()" value="Generate my Mad Lib">
+          <input class="form-control btn btn-primary" id="submit" type="submit" value="Generate my Mad Lib">
+        </div>
+        <div class="pull-left bg-danger label" ng-if="!checkValid()" ng-messages="myForm.$error">
+          <span class="text-danger" ng-message="required">Please fill out all fields</span>
+          <span class="text-danger" ng-message="number">Please enter a valid number in "Huge Number"</span>
         </div>
         <p>&nbsp;</p>
       </form>
     </section>
-    <section class="row" ng-show="myForm.$valid && myForm.$submitted == true">
+    <section class="row" ng-show="checkValid()">
       <div class="col-sm-12 result">
         <h4><span class="libs">{{user.name}}</span> was a <span class="libs">{{user.jobTitle | lowercase}}</span> who loved technology. Although {{gender.he}} loved parts of {{gender.his}} job, {{gender.he}} absolutely hated <span class="libs">{{user.tediousTask | lowercase}}</span> and <span class="libs">{{user.dirtyTask | lowercase}}</span>. So, <span class="libs">{{user.name}}</span> met with {{gender.his}} life mentor <span class="libs">{{user.celebrity}}</span> who told {{gender.him}} to learn how to <span class="libs">{{user.uselessSkill | lowercase}}</span> with Thinkful. Thinkful didn't offer a course on <span class="libs">{{user.uselessSkill | lowercase}}</span> so {{gender.he}} studied programming instead.</h4>
         <h4>What a great decision! With {{gender.his}} new skills, <span class="libs">{{user.name}}</span> built a(n) <span class="libs">{{user.adjective | lowercase}}</span> robot named <span class="libs">{{user.obnoxiousCelebrity}}</span> that not only loved <span class="libs">{{user.dirtyTask | lowercase}}</span> but did it <span class="libs">{{user.hugeNumber | number}}</span> times faster.</h4>
