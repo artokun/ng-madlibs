@@ -1,4 +1,4 @@
-angular.module('madLib', [])
+angular.module('madLib', ['ngMessages'])
   .controller('madLibCtrl', ['$scope', function ($scope) {
     $scope.gender = {
       gender: "Male",
@@ -7,7 +7,6 @@ angular.module('madLib', [])
       him: "him",
       female: true
     };
-    $scope.gender.female = false;
     $scope.checkGender = function () {
       if ($scope.gender.female == false) {
         $scope.gender = {
@@ -29,6 +28,19 @@ angular.module('madLib', [])
     };
     $scope.resetForm = function () {
       $scope.user = {};
-      $scope.user.$setPristine();
+      $scope.myForm.$setPristine();
+    };
+    $scope.checkValid = function () {
+      if ($scope.myForm.$valid && $scope.myForm.$submitted) {
+        var myEl = angular.element(document.querySelector('#submit'));
+        myEl.removeAttr('disabled');
+        return true;
+      } else if (!$scope.myForm.$valid && $scope.myForm.$submitted) {
+        var myEl = angular.element(document.querySelector('#submit'));
+        myEl.attr('disabled', ""); 
+        return false;
+      }
     };
 }]);
+
+//TODO: Find out how to NOT make the generate go through after validation fail
