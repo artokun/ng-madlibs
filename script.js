@@ -1,29 +1,29 @@
+var Gender = function () {};
+Gender.prototype = {
+  male: {
+    gender: "Male",
+    he: "he",
+    his: "his",
+    him: "him",
+    female: true
+  },
+  female: {
+    gender: "Female",
+    he: "she",
+    his: "her",
+    him: "her",
+    female: false
+  }
+};
+
 angular.module('madLib', ['ngMessages'])
   .controller('madLibCtrl', ['$scope', function ($scope) {
-    $scope.gender = {
-      gender: "Male",
-      he: "he",
-      his: "his",
-      him: "him",
-      female: true
-    };
+    $scope.gender = new Gender().male;
     $scope.checkGender = function () {
       if ($scope.gender.female == false) {
-        $scope.gender = {
-          gender: "Male",
-          he: "he",
-          his: "his",
-          him: "him",
-          female: true
-        };
+        $scope.gender = new Gender().male;
       } else {
-        $scope.gender = {
-          gender: "Female",
-          he: "she",
-          his: "her",
-          him: "her",
-          female: false
-        };
+        $scope.gender = new Gender().female;
       }
     };
     $scope.resetForm = function () {
@@ -37,7 +37,7 @@ angular.module('madLib', ['ngMessages'])
         return true;
       } else if (!$scope.myForm.$valid && $scope.myForm.$submitted) {
         var myEl = angular.element(document.querySelector('#submit'));
-        myEl.attr('disabled', ""); 
+        myEl.attr('disabled', "");
         return false;
       }
     };
