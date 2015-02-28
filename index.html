@@ -22,8 +22,8 @@
       </div>
     </section>
     <section class="row" ng-hide="myForm.$valid && myForm.$submitted == true">
-      <form name="myForm" class="col-sm-12 form" no-validate>
-<!--       <button ng-click="female = !female">Female = {{female}}</button>-->
+      <form name="myForm" class="col-sm-12 form">
+       <button ng-click="checkGender()">{{gender.gender}}</button>
         <h3>Provide the following words:</h3>
         <div class="col-sm-4">
           <input type="text" ng-model="user.name" class="form-control" placeholder="Name" required>
@@ -46,7 +46,7 @@
           <br>
           <input class="form-control" ng-model="user.adjective" type="text" placeholder="Adjective" required>
           <br>
-          <input class="form-control btn btn-primary" type="submit" ng-submit="checkGender()" value="Generate my Mad Lib">
+          <input class="form-control btn btn-primary" type="submit" value="Generate my Mad Lib">
         </div>
         <p>&nbsp;</p>
       </form>

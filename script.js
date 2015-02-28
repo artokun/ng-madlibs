@@ -1,31 +1,33 @@
 angular.module('madLib', [])
   .controller('madLibCtrl', ['$scope', function ($scope) {
-    var female; //Neville I need help with the gender switcher!!
-    var gender = {};
-    var checkGender = function () {
-      female = $scope.female;
-      if (female == false) {
-        gender = {
+    $scope.gender = {
+      gender: "Male",
+      he: "he",
+      his: "his",
+      him: "him",
+      female: true
+    };
+    $scope.gender.female = false;
+    $scope.checkGender = function () {
+      if ($scope.gender.female == false) {
+        $scope.gender = {
           gender: "Male",
           he: "he",
           his: "his",
           him: "him",
-          female: false
+          female: true
         };
       } else {
-        gender = {
+        $scope.gender = {
           gender: "Female",
           he: "she",
           his: "her",
           him: "her",
-          female: true
+          female: false
         };
       }
-      return gender;
     };
-    $scope.gender = checkGender();
-    
-    $scope.resetForm = function() {
+    $scope.resetForm = function () {
       $scope.user = {};
       $scope.user.$setPristine();
     };
