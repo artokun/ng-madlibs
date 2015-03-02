@@ -1,34 +1,57 @@
 /* Styles go here */
+
 body {
   padding-top: 10px;
 }
+
 .logo,
 .title {
   min-height: 120px;
 }
+
 .logo,
 .title,
 .form,
-.result{
+.result {
   border: 1px black solid;
 }
-.logo img{
+
+.logo img {
   max-height: 110px;
 }
+
 .title img {
   max-height: 50px;
 }
+
 .title h1 {
   margin: 10px 0;
 }
-.form > div{
+
+.form > div {
   padding: 0 20px;
-  text-align:center;
+  text-align: center;
 }
-.result{
+
+.result {
   padding: 20px;
 }
+
 .libs {
   text-decoration: underline;
-  font-weight: 300
+  font-weight: 300;
+}
+
+.libs-input {
+  overflow: hidden;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.libs-input.ng-hide.ng-hide-add {
+  opacity: 0;
+}
+
+.libs-input.ng-hide.ng-hide-remove {
+  opacity: 1;
 }
