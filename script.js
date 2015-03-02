@@ -16,7 +16,7 @@ Gender.prototype = {
   }
 };
 
-angular.module('madLib', ['ngMessages'])
+angular.module('madLib', ['ngMessages', 'ngAnimate'])
   .controller('madLibCtrl', ['$scope', function ($scope) {
     $scope.gender = new Gender().male;
     $scope.checkGender = function () {
